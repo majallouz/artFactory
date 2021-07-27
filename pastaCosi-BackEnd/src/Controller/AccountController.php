@@ -25,56 +25,7 @@ class AccountController extends AbstractController
         ]);
     }
 
-/**
-     * @Route("/login", name="login", methods={"POST"})
-     */
-  /*  public function login(Request $request){        
-        
-        $helpers = $this->get(Helpers::class);
-        
-        if ($json = $request->getContent()) {
-            $parametersAsArray = json_decode($json, true);
 
-            
-            $email = ($parametersAsArray['email']) ? $parametersAsArray['email'] : null ;
-            $password = ($parametersAsArray['password']) ? $parametersAsArray['password'] : null ;
-            $getHash = null ;
-
-            $emailConstraint = new Assert\Email();
-            $emailConstraint->message = "This email is not valid!";
-            $validate_email = $this->get('validator')->validate($email, $emailConstraint);
-
-            $pwd = hash('sha256', $password);
-
-            if(count($validate_email) == 0 && $password != null){
-
-                $jwt_auth = $this->get(JwtAuth::class);
-
-                if($getHash == null || $getHash == false){
-                    $signup = $jwt_auth->signup($email, $pwd);
-                }else{
-                    $signup = $jwt_auth->signup($email, $pwd, true);
-                }
-
-                return $this->json($signup);
-
-            }else{
-                $data = array(
-                    'status'=>'error',
-                    'data'=>'Email or password Incorrect.'
-                );
-            }
-        }else{
-            $data = array(
-                'status'=>'error',
-                'data'=>'Send json via post.'
-            );
-    
-        }
-
-        return $helpers->json($data);
-    }
-*/
 
     /**
 * @Route("/account/getById/{id}", name="getAccountById", methods={"GET"})
@@ -184,6 +135,38 @@ public function deleteAccount(Account $account): Response
    // You can set the allowed methods too, if you want
    $response->headers->set('Access-Control-Allow-Methods', 'DELETE');
    return $response;
+}
+
+
+
+/**
+* @Route("/account/login/", name="login", methods={"POST"})
+* @return Response
+*
+*/
+public function login(Request $request): Response
+{
+    $data = $request->getContent();
+    $encoders = array(new JsonEncoder());
+    $serializer = new Serializer([new ObjectNormalizer()], $encoders);
+    $account = $serializer->deserialize($data, 'App\Entity\Account', 'json');
+     $email = $account->getEmail();
+     $password = $account->getPassword();
+    $em = $this->getDoctrine()->getManager();	
+    $accounts = $em->getRepository(Account::class)->findOneBy([
+        'Email' => $email,
+        'Password' => $password,
+    ]);
+  
+    if ($accounts!=null){
+        $encoders = array(new JsonEncoder());
+        $serializer = new Serializer([new ObjectNormalizer()], $encoders);
+        $data = $serializer->serialize($accounts, 'json');
+        $response = new Response($data, 200);
+        return $response;
+
+    }
+    return new Response("no account found", 400);
 }
 
 }
