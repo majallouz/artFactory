@@ -1,3 +1,4 @@
+import { AccountComponent } from './account/account.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AboutUsComponent} from './about-us/about-us.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'login', component: LoginComponent},
   {path: 'activity', component: ActivityComponent},
+  {path: 'account', component: AccountComponent},
   {path: 'clubs/:id', component: ClubComponent},
 ];
 
