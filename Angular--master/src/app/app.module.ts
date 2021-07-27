@@ -32,6 +32,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import { ClubComponent } from './club/club.component';
 import { ActivityComponent } from './activity/activity.component';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { ActivityComponent } from './activity/activity.component';
     LoginComponent,
     ClubComponent,
     ActivityComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
