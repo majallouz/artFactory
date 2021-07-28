@@ -10,8 +10,23 @@ import { OwnerService } from "../shared/services/owner.service";
 export class NavbarComponent implements OnInit {
 
   constructor(private router: Router , private ownerSrevice : OwnerService ) { }
+  admin:string;
+  test:boolean=false;
+  value:string="admin";
 
   ngOnInit() {
+    this.admin=localStorage.getItem("id");  
+    console.log("bbbbbbbb");
+    console.log(this.admin === this.value);
+
+    if(this.admin === this.value) {
+      this.test=true;
+      console.log(this.test);
+      console.log("aaaaaaaaaaaaa");
+    
+    }
+    this.router.navigate(['home']);
+    console.log(this.admin);
   }
 
 
