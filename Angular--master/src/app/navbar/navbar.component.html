@@ -26,9 +26,11 @@
                     <li class="nav-item">
                         <a class="nav-link"  routerLink="activity">ACTIVITIES</a>
                     </li>
+                   
                     <li class="nav-item">
-                            <a class="nav-link"  routerLink="account">ACCOUNTS</a>
+                            <a class="nav-link" *ngIf="test"  routerLink="account">ACCOUNTS</a>
                         </li>
+                  
 
                     <li class="nav-item">
                       <a class="nav-link"  routerLink="admin" *ngIf="resolve()">Admin</a>

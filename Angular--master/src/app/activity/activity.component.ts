@@ -59,6 +59,8 @@ export class ActivityComponent implements OnInit {
   }
 
   getActivities(){
+
+    console.log(localStorage.getItem("id"));
     
       this.activityService.getActivities().subscribe(
         (res : any)  => {
