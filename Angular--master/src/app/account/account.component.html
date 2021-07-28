@@ -10,25 +10,25 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="nom">
         <th mat-header-cell *matHeaderCellDef> Nom  </th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.nom}} </td>
+        <td class="text-center" mat-cell *matCellDef="let elements"> {{elements.Nom}} </td>
       </ng-container>
-  
+ 
       <ng-container matColumnDef="prenom">
         <th mat-header-cell *matHeaderCellDef> Prenom  </th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+        <td class="text-center" mat-cell *matCellDef="let elements"> {{elements.Prenom}} </td>
       </ng-container>
 
       <ng-container matColumnDef="age">
         <th mat-header-cell *matHeaderCellDef> Age  </th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.age}} </td>
+        <td class="text-center" mat-cell *matCellDef="let elements"> {{elements.Age}} </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef> Email  </th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.email}} </td>
+        <td class="text-center" mat-cell *matCellDef="let elements"> {{elements.Email}} </td>
       </ng-container>
   
-  
+
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> </th>
         <td class="text-center" mat-cell *matCellDef="let element">
@@ -72,6 +72,7 @@
               <textarea class="col-12 mytextarea"  type="text" formControlName="prenom" placeholder="Prenom" ></textarea>
               <textarea class="col-12 mytextarea"  type="text" formControlName="age" placeholder="Age" ></textarea>
               <textarea class="col-12 mytextarea"  type="text" formControlName="email" placeholder="Email" ></textarea>
+              <textarea class="col-12 mytextarea"  type="text" formControlName="password" placeholder="Password" ></textarea>
             </form>
           </div>
           <div class="modal-footer">
@@ -100,6 +101,8 @@
               </textarea>
               <textarea class="col-12 mytextarea"  type="text" formControlName="email" placeholder="Email" >
               </textarea>
+              <textarea class="col-12 mytextarea"  type="text" formControlName="password" placeholder="Password" >
+                </textarea>
   
             </form>
           </div>
