@@ -64,7 +64,7 @@ class EventController extends AbstractController
         return $response;
     }
     /**
-     * @Route("/event/add/", name="event", methods={"post"})
+     * @Route("/event/add/", name="addevent", methods={"post"})
      */
 
     public function addEvent(Request $request)
@@ -107,7 +107,7 @@ class EventController extends AbstractController
 
     }
     /**
-     * @Route("/event/delete/{id}", name="delete", methods={"delete"})
+     * @Route("/event/delete/{id}", name="deleteEvent", methods={"delete"})
      * @return Response
      *
      */

@@ -11,6 +11,8 @@ import {LoginComponent} from "./login/login.component";
 import {ClubComponent} from "./club/club.component";
 import {ActivityComponent} from "./activity/activity.component";
 import {PaymentComponent} from "./payment/payment.component";
+import {EventComponent} from "./event/event.component";
+
 
 
 
@@ -18,12 +20,13 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'home', component: HomeComponent},
   {path: 'events', component: EventsComponent},
-  {path: 'event', component: AboutEventComponent},
+ // {path: 'event', component: AboutEventComponent},
   {path: 'kindergarten', component: KindergartenComponent},
   {path: 'about', component: AboutUsComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'login', component: LoginComponent},
   {path: 'activity', component: ActivityComponent},
+  {path: 'event', component: EventComponent},
   {path: 'account', component: AccountComponent},
   {path: 'payment', component: PaymentComponent},
   {path: 'clubs/:id', component: ClubComponent},
