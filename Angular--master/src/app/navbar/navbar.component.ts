@@ -1,6 +1,9 @@
+import { LoginComponent } from './../login/login.component';
+import { NavbarService } from './../shared/services/navbar.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwnerService } from "../shared/services/owner.service";
+import { LoginService } from '../shared/services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +12,18 @@ import { OwnerService } from "../shared/services/owner.service";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router , private ownerSrevice : OwnerService ) { }
+  constructor(private router: Router , private ownerSrevice : OwnerService , public nav: NavbarService,
+  public login:LoginComponent) { }
   admin:string;
   test:boolean=false;
   value:string="admin";
+  isLogged:string="false";
 
   ngOnInit() {
+    console.log("testeerrrrr");
+    console.log(this.login.isLogged);
     this.admin=localStorage.getItem("id");  
+    this.isLogged=localStorage.getItem("isLogged");  
     console.log("bbbbbbbb");
     console.log(this.admin === this.value);
 
@@ -32,7 +40,9 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.ownerSrevice.logout()
-    this.router.navigate(['home'])
+  
+    this.router.navigate(['login']);
+    window.location.reload();
   }
 
   resolve(){

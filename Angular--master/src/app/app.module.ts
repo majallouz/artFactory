@@ -80,7 +80,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     MatTableModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
