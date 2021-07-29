@@ -17,7 +17,7 @@ export class ActivityComponent implements OnInit {
 
   id = null ;
 
-  displayedColumns: string[] = ['title','description' , 'actions' ];
+  displayedColumns: string[] = ['title','description'];
   dataSource = new MatTableDataSource([]);
 
   toDeleteActivity = null ;
@@ -29,7 +29,24 @@ export class ActivityComponent implements OnInit {
 
   constructor(private router: Router,  private activityService : ActivityService,private formBuilder : FormBuilder) { }
 
+  admin:string;
+  test:boolean=false;
+  value:string="admin";
+
+
   ngOnInit(): void {
+    this.admin=localStorage.getItem("id");  
+    console.log("bbbbbbbb");
+    console.log(this.admin === this.value);
+
+    if(this.admin === this.value) {
+      this.test=true;
+      this.displayedColumns = ['title','description' , 'actions' ];
+  
+    
+    }
+    this.router.navigate(['activity']);
+    console.log(this.admin);
     this.getActivities();
 
     this.addForm = this.formBuilder.group({
