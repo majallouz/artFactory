@@ -12,6 +12,8 @@ import {ClubComponent} from "./club/club.component";
 import {ActivityComponent} from "./activity/activity.component";
 import {PaymentComponent} from "./payment/payment.component";
 import {EventComponent} from "./event/event.component";
+import {FeedbackComponent} from "./feedback/feedback.component";
+
 
 
 
@@ -29,6 +31,7 @@ const routes: Routes = [
   {path: 'event', component: EventComponent},
   {path: 'account', component: AccountComponent},
   {path: 'payment', component: PaymentComponent},
+  {path: 'feedback', component: FeedbackComponent},
   {path: 'clubs/:id', component: ClubComponent},
 ];
 
