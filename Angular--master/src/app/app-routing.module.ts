@@ -10,6 +10,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {LoginComponent} from "./login/login.component";
 import {ClubComponent} from "./club/club.component";
 import {ActivityComponent} from "./activity/activity.component";
+import {PaymentComponent} from "./payment/payment.component";
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'activity', component: ActivityComponent},
   {path: 'account', component: AccountComponent},
+  {path: 'payment', component: PaymentComponent},
   {path: 'clubs/:id', component: ClubComponent},
 ];
 

@@ -2,20 +2,20 @@
     <div class="table-head ">
       <button class="mybutton" data-toggle="modal" data-target="#addModal" >
         <i class="material-icons">
-          add Activity
+          add
         </i>
       </button>
     </div>
   
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef> Title  </th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.title}} </td>
+      <ng-container matColumnDef="totalprice">
+        <th mat-header-cell *matHeaderCellDef> Totalprice  </th>
+        <td class="text-center" mat-cell *matCellDef="let element"> {{element.TotalPrice}} </td>
       </ng-container>
-   
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> Description  </th>
-        <td class="text-center" mat-cell *matCellDef="let element"> {{element.description}} </td>
+  
+      <ng-container matColumnDef="paidprice">
+        <th mat-header-cell *matHeaderCellDef> Paidprice  </th>
+        <td class="text-center" mat-cell *matCellDef="let element"> {{element.PaidPrice}} </td>
       </ng-container>
   
   
@@ -58,8 +58,8 @@
           <div class="modal-body">
             <form name="loginForm" [formGroup]="updateForm" novalidate>
   
-              <input class="col-12 myinput"  type="text" formControlName="title" placeholder="Title" />
-              <textarea class="col-12 mytextarea"  type="text" formControlName="description" placeholder="Description" ></textarea>
+              <input class="col-12 myinput"  type="text" formControlName="totalprice" placeholder="Totalprice" />
+              <textarea class="col-12 mytextarea"  type="text" formControlName="paidprice" placeholder="Paidprice" ></textarea>
             </form>
           </div>
           <div class="modal-footer">
@@ -81,8 +81,8 @@
           <div class="modal-body">
             <form name="loginForm" [formGroup]="addForm" novalidate>
   
-              <input class="col-12 myinput"  type="text" formControlName="title" placeholder="Title" />
-              <textarea class="col-12 mytextarea"  type="text" formControlName="description" placeholder="Description" >
+              <input class="col-12 myinput"  type="text" formControlName="totalprice" placeholder="Totalprice" />
+              <textarea class="col-12 mytextarea"  type="text" formControlName="paidprice" placeholder="Paidprice" >
               </textarea>
   
             </form>
@@ -104,7 +104,7 @@
             </button>
           </div>
           <div class="modal-body">
-            You really want to delete this Activity ?
+            You really want to delete this Payment ?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
