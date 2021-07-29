@@ -33,6 +33,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { ClubComponent } from './club/club.component';
 import { ActivityComponent } from './activity/activity.component';
 import { AccountComponent } from './account/account.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { AccountComponent } from './account/account.component';
     ClubComponent,
     ActivityComponent,
     AccountComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
