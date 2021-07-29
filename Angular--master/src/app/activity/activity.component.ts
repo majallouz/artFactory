@@ -34,58 +34,58 @@ export class ActivityComponent implements OnInit {
 
     this.addForm = this.formBuilder.group({
       title: ['',  Validators.required ],
-      description: ['', Validators.required ] 
+      description: ['', Validators.required ]
     });
 
     this.updateForm = this.formBuilder.group({
       title: ['',  Validators.required ],
-      description: ['', Validators.required ] 
+      description: ['', Validators.required ]
     });
   }
 
 
   add() {
-    console.log("aa")   
-      let activity : any = {} ;
-      activity.title = this.addForm.value.title ;
-      activity.description = this.addForm.value.description ;
-      this.activityService.postActivity(activity).subscribe(
-        res => {
-          this.getActivities() ;
-        },
-        error => console.log(error)
+    console.log("aa")
+    let activity : any = {} ;
+    activity.title = this.addForm.value.title ;
+    activity.description = this.addForm.value.description ;
+    this.activityService.postActivity(activity).subscribe(
+      res => {
+        this.getActivities() ;
+      },
+      error => console.log(error)
 
-      )    
+    )
   }
 
   getActivities(){
 
     console.log(localStorage.getItem("id"));
-    
-      this.activityService.getActivities().subscribe(
-        (res : any)  => {
-          this.dataSource.data = res ;
-          this.activities = res;
-        } ,
-        err => {
-          console.log(err)
-        }
-      )
-   
+
+    this.activityService.getActivities().subscribe(
+      (res : any)  => {
+        this.dataSource.data = res ;
+        this.activities = res;
+      } ,
+      err => {
+        console.log(err)
+      }
+    )
+
   }
 
   select( id: any ) {
     this.toDeleteActivity = id ;
   }
 
-  delete() {       
-      this.activityService.deleteActivity(this.toDeleteActivity ).subscribe(
-        (res : any) => {
-          this.getActivities() ;
-          this.toDeleteActivity = null
-        } ,
-        err => console.log(err)
-      )   
+  delete() {
+    this.activityService.deleteActivity(this.toDeleteActivity ).subscribe(
+      (res : any) => {
+        this.getActivities() ;
+        this.toDeleteActivity = null
+      } ,
+      err => console.log(err)
+    )
 
   }
 
@@ -98,21 +98,22 @@ export class ActivityComponent implements OnInit {
   }
 
   update() {
-   
-      let activity : any = {} ;
-      activity.id = this.toUpdateActivity ;
-      activity.title = this.updateForm.value.title ;
-      activity.description = this.updateForm.value.description ;
-      this.activityService.putActivity(activity.id, activity ).subscribe(
-        (res : any) => {
-          this.getActivities() ;
-          this.toUpdateActivity = null
-        } ,
-        err => console.log(err)
-      )
-    
+
+    let activity : any = {} ;
+    activity.id = this.toUpdateActivity ;
+    activity.title = this.updateForm.value.title ;
+    activity.description = this.updateForm.value.description ;
+    this.activityService.putActivity(activity.id, activity ).subscribe(
+      (res : any) => {
+        this.getActivities() ;
+        this.toUpdateActivity = null
+      } ,
+      err => console.log(err)
+    )
+
   }
 
-  
+
 
 }
+

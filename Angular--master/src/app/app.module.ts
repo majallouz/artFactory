@@ -34,6 +34,7 @@ import { ClubComponent } from './club/club.component';
 import { ActivityComponent } from './activity/activity.component';
 import { AccountComponent } from './account/account.component';
 import { PaymentComponent } from './payment/payment.component';
+import { EventComponent } from './event/event.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { PaymentComponent } from './payment/payment.component';
     ActivityComponent,
     AccountComponent,
     PaymentComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,
