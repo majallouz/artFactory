@@ -32,7 +32,10 @@ export class LoginComponent implements OnInit {
       response => {
         this.loginService.saveToken(response.token) ;
         this.loginService.saveId(response.id) ;
-        this.router.navigate(['home'])
+      console.log(response.Nom);
+      localStorage.setItem("id", response.Nom);
+        this.router.navigate(['home']);
+        window.location.reload();
       },
       err => {
         console.log(err)
