@@ -28,8 +28,24 @@ export class EventComponent implements OnInit {
   events = [];
 
   constructor(private router: Router,  private eventService : EventService,private formBuilder : FormBuilder) { }
+  admin:string;
+  test:boolean=false;
+  value:string="admin";
+
 
   ngOnInit(): void {
+    this.admin=localStorage.getItem("id");  
+    console.log("bbbbbbbb");
+    console.log(this.admin === this.value);
+
+    if(this.admin === this.value) {
+      this.test=true;
+      this.displayedColumns = ['name','description' , 'actions' ];
+  
+    
+    }
+    this.router.navigate(['event']);
+    console.log(this.admin);
     this.getEvents();
 
     this.addForm = this.formBuilder.group({

@@ -1,3 +1,4 @@
+import { NavbarService } from './../shared/services/navbar.service';
 import { Component, OnInit } from '@angular/core';
 import { Account } from '../model/account.model';
 import { Router } from '@angular/router';
@@ -14,11 +15,13 @@ export class LoginComponent implements OnInit {
   account = new Account();
   loginForm: FormGroup;
   error: string = null;
+  isLogged:boolean=false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router,private loginService : LoginService) {
+  constructor(private formBuilder: FormBuilder, private router: Router,private loginService : LoginService,public nav: NavbarService) {
   }
 
   ngOnInit(): void {
+    this.nav.hide();
     this.loginForm = this.formBuilder.group({
       email: ['',  [Validators.required  , Validators.email]],
       password: ['', Validators.required ]
@@ -35,7 +38,10 @@ export class LoginComponent implements OnInit {
       console.log(response.Nom);
       localStorage.setItem("id", response.Nom);
         this.router.navigate(['home']);
+        localStorage.setItem("isLogged", "true");
+        this.isLogged=true;
         window.location.reload();
+      
       },
       err => {
         console.log(err)

@@ -1,7 +1,7 @@
 <!-- NAVBAR SECTION -->
 <div class="navbar-main">
     <div class="container">
-        <nav id="navbar-example" class="navbar navbar-expand-lg">
+        <nav id="navbar-example" class="navbar navbar-expand-lg" *ngIf="nav.visible">
             <a class="navbar-brand" href="index.html">
                 <img src="assets/images/logo.png" alt="">
             </a>
@@ -11,44 +11,53 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link"  routerLink="home">home</a>
+                        <a class="nav-link"  routerLink="home">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  routerLink="about" >About us</a>
+                        <a class="nav-link"  routerLink="about" >ABOUT US</a>
                     </li>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link"  routerLink="kindergarten">kinder</a>
                     </li>
+                -->
                     <li class="nav-item">
                         <a class="nav-link"  routerLink="">TEACHERS</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"  routerLink="activity">ACTIVITIES</a>
+                        <a class="nav-link"  routerLink="activity" *ngIf="isLogged">ACTIVITIES</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"  routerLink="payment">PAYMENT</a>
+                        <a class="nav-link" *ngIf="test"  routerLink="payment">PAYMENT</a>
                     </li>
                    
                   <li class="nav-item">
-                    <a class="nav-link"  routerLink="event">EVENTS</a>
+                    <a class="nav-link"  routerLink="event"*ngIf="isLogged">EVENTS</a>
                   </li>
                     <li class="nav-item">
                             <a class="nav-link" *ngIf="test"  routerLink="account">ACCOUNTS</a>
                         </li>
 
 
+                        <li class="nav-item">
+                            <a class="nav-link"  routerLink="feedback">FEEDBACK</a>
+                        </li>
+
+
                     <li class="nav-item">
+              <!--      <li class="nav-item">
                       <a class="nav-link"  routerLink="admin" *ngIf="resolve()">Admin</a>
                     </li>
+                -->
 
                   <li class="nav-item">
-                    <a class="nav-link"  routerLink="login" *ngIf="!resolve()">Login</a>
+                    <a class="nav-link"  routerLink="login" *ngIf="!resolve()">LOGIN</a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link pointer" *ngIf="resolve()" (click)="logout()">logout</a>
+                    <a class="nav-link pointer" *ngIf="resolve()" (click)="logout()">LOGOUT</a>
                   </li>
 <!--                    <li class="nav-item dropdown dmenu">-->
 <!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->

@@ -35,6 +35,7 @@ import { ActivityComponent } from './activity/activity.component';
 import { AccountComponent } from './account/account.component';
 import { PaymentComponent } from './payment/payment.component';
 import { EventComponent } from './event/event.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { EventComponent } from './event/event.component';
     AccountComponent,
     PaymentComponent,
     EventComponent,
+    FeedbackComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,7 @@ import { EventComponent } from './event/event.component';
     MatTableModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
