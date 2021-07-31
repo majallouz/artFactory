@@ -29,7 +29,22 @@ export class FeedbackComponent implements OnInit {
 
   constructor(private router: Router,  private feedbackService : FeedbackService,private formBuilder : FormBuilder) { }
 
+  admin:string;
+  test:boolean=false;
+  value:string="admin";
+
+
   ngOnInit(): void {
+    this.admin=localStorage.getItem("id");  
+    console.log(this.admin === this.value);
+
+    if(this.admin === this.value) {
+      this.test=true;
+      this.displayedColumns = ['rating','comment' , 'actions' ];
+  
+    
+    }
+    this.router.navigate(['feedback']);
     this.getFeedbacks();
 
     this.addForm = this.formBuilder.group({
