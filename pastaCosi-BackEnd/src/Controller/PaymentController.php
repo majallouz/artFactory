@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Payment;
+use App\Entity\Account;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PaymentController extends AbstractController
 {
@@ -64,6 +66,35 @@ class PaymentController extends AbstractController
         $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
         return $response;
     }
+
+
+
+
+/**
+     * @Route("/payment/insert", name="insertPayment", methods={"POST"})
+     */
+    public function insert(Request $request): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $data = json_decode($request->getContent(), true);
+        $payment =  new Payment();
+
+        $account = $em->getRepository(Account::class)->find($data['account']);
+        $totalPrice = $data['totalprice'];
+        $paidPrice = $data['paidprice'];
+
+        $payment->setTotalPrice($totalPrice);
+        $payment->setPaidPrice($paidPrice);
+        $payment->setAccount($account);       
+
+        $em->persist($payment);
+        $em->flush();
+        $response = new JsonResponse($data, Response::HTTP_OK);
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        return $response;
+    }
+
+
     /**
      * @Route("/payment/add/", name="payment", methods={"post"})
      */

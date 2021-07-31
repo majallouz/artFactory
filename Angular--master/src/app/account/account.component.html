@@ -8,6 +8,11 @@
     </div>
   
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id  </th>
+        <td class="text-center" mat-cell *matCellDef="let elements"> {{elements.id}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="nom">
         <th mat-header-cell *matHeaderCellDef> Nom  </th>
         <td class="text-center" mat-cell *matCellDef="let elements"> {{elements.Nom}} </td>

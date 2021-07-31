@@ -1,9 +1,12 @@
 import { element } from 'protractor';
 import { AccountService } from './../shared/services/account.service';
+import { Account } from './../model/account.model';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {MatTableDataSource} from "@angular/material/table";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 @Component({
@@ -15,7 +18,7 @@ export class AccountComponent implements OnInit {
 
   id = null ;
 
-  displayedColumns: string[] = ['nom','prenom' , 'age' , 'email' , 'actions'];
+  displayedColumns: string[] = ['id','nom','prenom' , 'age' , 'email' , 'actions'];
   dataSource = new MatTableDataSource([]);
 
   toDeleteAccount = null ;
@@ -23,6 +26,7 @@ export class AccountComponent implements OnInit {
 
   addForm: FormGroup;
   updateForm: FormGroup;
+  account : Account;
   accounts = [];
 
   constructor(private router: Router,  private accountService : AccountService,private formBuilder : FormBuilder) { }
@@ -46,6 +50,23 @@ export class AccountComponent implements OnInit {
       password: ['', Validators.required ]
 
     });
+  }
+
+  getById(account : number):any{
+    this.accountService.getAccount(account).subscribe(
+      (res : any)  => {
+       
+        this.account = res;
+        console.log(this);
+        console.log(this.account);
+        return this.account;
+      } ,
+      err => {
+        console.log(err)
+      }
+      
+    )
+    return this.account;
   }
 
   add() { 
