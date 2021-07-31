@@ -16,14 +16,8 @@
                     <li class="nav-item">
                         <a class="nav-link"  routerLink="about" >ABOUT US</a>
                     </li>
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link"  routerLink="kindergarten">kinder</a>
-                    </li>
-                -->
-                    <li class="nav-item">
-                        <a class="nav-link"  routerLink="">TEACHERS</a>
-                    </li>
+                    
+                    
 
                     <li class="nav-item">
                         <a class="nav-link"  routerLink="activity" *ngIf="isLogged">ACTIVITIES</a>
@@ -42,15 +36,12 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link"  routerLink="feedback">FEEDBACK</a>
+                            <a class="nav-link"  routerLink="feedback" *ngIf="isLogged">FEEDBACK</a>
                         </li>
 
 
                     <li class="nav-item">
-              <!--      <li class="nav-item">
-                      <a class="nav-link"  routerLink="admin" *ngIf="resolve()">Admin</a>
-                    </li>
-                -->
+              
 
                   <li class="nav-item">
                     <a class="nav-link"  routerLink="login" *ngIf="!resolve()">LOGIN</a>
@@ -59,17 +50,7 @@
                   <li class="nav-item">
                     <a class="nav-link pointer" *ngIf="resolve()" (click)="logout()">LOGOUT</a>
                   </li>
-<!--                    <li class="nav-item dropdown dmenu">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--              Nom Prénom-->
-<!--            </a>-->
-<!--                        <div class="dropdown-menu">-->
-<!--                            <a class="dropdown-item" href="page-gallery.html">Paramétres</a>-->
-<!--                            <a class="dropdown-item" href="page-testimonials.html">Profil</a>-->
-<!--                            <a class="dropdown-item" href="page-faq.html">Ajouter une jardin d'enfant</a>-->
-<!--                            <a class="dropdown-item" href="page-404.html">Ajouter un club</a>-->
-<!--                        </div>-->
-<!--                    </li>-->
+
                 </ul>
             </div>
         </nav>

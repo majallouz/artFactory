@@ -16,7 +16,7 @@ export class PaymentService {
   }
 
   postPayment(payment  : any ) : Observable<any>{
-    return this.http.post<any>('http://localhost:8000/payment/add/'  , payment  );
+    return this.http.post<any>('http://localhost:8000/payment/insert'  , payment  );
   }
 
   deletePayment(id : number ) {

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {MatTableDataSource} from "@angular/material/table";
 import {PaymentService} from "../shared/services/payment.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { AccountComponent } from '../account/account.component';
 
 @Component({
   selector: 'app-payment',
@@ -13,7 +14,7 @@ export class PaymentComponent implements OnInit {
 
   id = null ;
 
-  displayedColumns: string[] = ['totalprice' , 'paidprice','actions' ];
+  displayedColumns: string[] = ['Account','totalprice' , 'paidprice','actions' ];
   dataSource = new MatTableDataSource([]);
 
   toDeletePayment = null ;
@@ -23,12 +24,17 @@ export class PaymentComponent implements OnInit {
   updateForm: FormGroup;
   payments = [];
 
-  constructor(private router: Router,  private paymentService : PaymentService,private formBuilder : FormBuilder) { }
+  constructor(private router: Router,  private paymentService : PaymentService,private formBuilder : FormBuilder,
+    private accountComponent: AccountComponent) { }
 
   ngOnInit(): void {
     this.getPayments();
+    console.log('aaeazer');
+    console.log( this.dataSource.data);
+    console.log('aaeazer55555555');
 
     this.addForm = this.formBuilder.group({
+      account:  ['', Validators.required ],
       totalprice: ['', Validators.required ],
       paidprice: ['', Validators.required ] 
     });
@@ -41,11 +47,15 @@ export class PaymentComponent implements OnInit {
 
 
   add() {
-    console.log("aa")   
       let payment : any = {} ;
-      payment.id= this.addForm.value.id ;
+     // payment.id= this.addForm.value.id ;
       payment.totalprice = this.addForm.value.totalprice ;
       payment.paidprice = this.addForm.value.paidprice ;
+      let idAccount = this.addForm.value.account ;
+      payment.account = idAccount;
+      
+      
+     
       this.paymentService.postPayment(payment).subscribe(
         res => {
           this.getPayments() ;
@@ -53,6 +63,7 @@ export class PaymentComponent implements OnInit {
         error => console.log(error)
 
       )    
+      window.location.reload();
   }
 
   getPayments(){

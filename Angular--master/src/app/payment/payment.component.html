@@ -8,6 +8,10 @@
     </div>
   
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="Account">
+        <th mat-header-cell *matHeaderCellDef> Account  </th>
+        <td class="text-center" mat-cell *matCellDef="let element"> {{element.account.nom}} </td>
+      </ng-container>
       <ng-container matColumnDef="totalprice">
         <th mat-header-cell *matHeaderCellDef> Totalprice  </th>
         <td class="text-center" mat-cell *matCellDef="let element"> {{element.TotalPrice}} </td>
@@ -79,12 +83,11 @@
             </button>
           </div>
           <div class="modal-body">
-            <form name="loginForm" [formGroup]="addForm" novalidate>
-  
+            <form name="loginForm" [formGroup]="addForm" novalidate>  
+              <input class="col-12 myinput"  type="text" formControlName="account" placeholder="Account" />
               <input class="col-12 myinput"  type="text" formControlName="totalprice" placeholder="Totalprice" />
               <textarea class="col-12 mytextarea"  type="text" formControlName="paidprice" placeholder="Paidprice" >
-              </textarea>
-  
+              </textarea>  
             </form>
           </div>
           <div class="modal-footer">
