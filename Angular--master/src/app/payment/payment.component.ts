@@ -63,7 +63,7 @@ export class PaymentComponent implements OnInit {
         error => console.log(error)
 
       )    
-      window.location.reload();
+      this.router.navigate(['payment']);
   }
 
   getPayments(){
